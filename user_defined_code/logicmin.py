@@ -194,19 +194,27 @@ def Minimize(minterms,dontcares,num):
                     j=i-1
                     while j>=0:
                         if set(mincover[i])&set(mincover[j])==set(mincover[i]):    #Removing dominated rows
-                            s1=set(mincover[j])-set(mincover[i])
-                            x=0
-                            for m1 in range(len(implicants)):
-                                if s1&set(mincover[m1])==s1 and implicants[m1].count('')>=implicants[j].count(''):
-                                    x+=1 
-                            if x>1 and implicants[i].count('')>implicants[j].count('') and mincover[i]!=[]:
-                                del implicants[j]
-                                del mincover[j]
-                                del l1[j]
+                            if set(mincover[i])==set(mincover[j]):
+                                key=i if implicants[i].count('')<implicants[j].count('') else j
+                                del implicants[key]
+                                del mincover[key]
+                                del l1[key]
                             else:
-                                del implicants[i]
-                                del mincover[i]
-                                del l1[i]
+                                s1=set(mincover[j])-set(mincover[i])
+                                x=0
+                                for m1 in range(len(implicants)):
+                                    if s1&set(mincover[m1])==s1 and set(mincover[m1])-s1!=set(): #implicants[m1].count('')>=implicants[j].count(''):
+                                        x+=1 
+                                if x>1 and implicants[i].count('')>implicants[j].count('') and mincover[i]!=[]:
+                                    #j-=1
+                                    #continue
+                                    del implicants[j]
+                                    del mincover[j]
+                                    del l1[j]
+                                else:
+                                    del implicants[i]
+                                    del mincover[i]
+                                    del l1[i]
                             num2=1
                             i-=1
                             j=i-1
@@ -253,6 +261,7 @@ def Minimize(minterms,dontcares,num):
             l2=Transpose(l1)
             num1=1
     return minimized
+
 
 def simplify(minterms,dontcares,minimal,num,var):
     lim = 2**num
