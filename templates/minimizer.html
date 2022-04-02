@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block extralinks %}
+<link rel="stylesheet" href="{{ url_for('static',filename='minimizerstyle.css') }}">
+{% endblock extralinks %}
+
+{% block title %}
+    Logic minimizer
+{% endblock title %}
+
+{% block body %}
+    <h1 class="heading">Logic minimizer</h1>
+    <div class="alert alert-danger container" role="alert" id="alert">
+      {{message}}
+    </div>
+      <form class="form-style" method="post" action="{{url_for('minimizer')}}">
+        <div class="form-group row">
+          <label for="num" class="col-sm-3 col-form-label">Enter the number of Variables :</label>
+          <div class="col-sm-9">
+            <input type="Number" class="form-control" placeholder="Number of Variables" name="num">
+          </div>
+        </div>
+        <div class="form-group row">
+            <label for="var" class="col-sm-3 col-form-label">Enter Variables seperated by spaces :</label>
+          <div class="col-sm-9">
+            <input type="text" class="form-control"placeholder="Variables (seperated by spaces)" name="var">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="minterms" class="col-sm-3 col-form-label">Enter Minterms seperated by spaces :</label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control"placeholder="Minterms (seperated by spaces)" name="minterms">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="minterms" class="col-sm-3 col-form-label">Enter Don't Cares seperated by spaces :</label>
+      <div class="col-sm-9">
+        <input type="text" class="form-control"placeholder="Don't Cares (seperated by spaces)" name="dontcares">
+      </div>
+    </div>
+        <button type="submit" class="btn btn-dark">Submit</button>
+      </form>
+
+    <script>
+        const disp = "{{disp}}";
+        const al = document.getElementById("alert");
+        al.style.display = disp;
+        const act = document.getElementById("logic-min");
+        act.classList.add("active");
+    </script>
+{% endblock body %}

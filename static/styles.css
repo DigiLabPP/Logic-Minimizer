@@ -1,0 +1,30 @@
+body{
+    text-align: center;
+    background-color: F7F5F2;
+}
+
+.nav-item{
+    margin: 0 2rem;
+}
+
+.navbar{
+    background-color: #212121;
+}
+
+.heading{
+    margin: 2% 0;
+}
+
+.result-box{
+    margin-top:15%;
+}
+
+.result-text{
+    font-size: 2rem;
+    font-family: 'Raleway', sans-serif;
+}
+
+.homepage-content{
+    margin: 0 auto;
+    padding:15% 20%;
+}

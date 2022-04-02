@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block body %}
+<form method="POST" action="/test">
+    <input type="text" id="fname" name="num">
+    <button type="submit"></button>
+</form>
+
+{% for i in n %}
+    <h1>{{loop.index}}</h1>
+{% endfor %}
+{% endblock body %}

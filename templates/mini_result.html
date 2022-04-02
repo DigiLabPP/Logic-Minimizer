@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Result
+{% endblock title %}
+
+{% block extralinks %}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@500&display=swap" rel="stylesheet">
+{% endblock extralinks %}
+
+{% block body %}
+    <div class="container result-box">
+        <span class="result-text">Minimization Output Function: <br>
+            SOP : {{sop}} <br>
+            POS : {{pos}}
+        </span>
+        <br>
+        <br>
+        <a href="/logicmin" class="text-primary">Check for other case..</a>
+    </div>
+
+    <script>
+        const act = document.getElementById("logic-min");
+        act.classList.add("active");
+    </script>
+{% endblock body %}
